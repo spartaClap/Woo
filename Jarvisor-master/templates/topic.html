@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- html 기본 -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- 부트스트랩 연결 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-- ajax 연결 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- 구글 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
+      rel="stylesheet"
+  />  
+
+  <!-- css 파일 연결-->
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/topic.css')}}" />
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/menu.css')}}" />
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/menubar.css')}}" />
+  
+  <title>모두의 회의 비서 Jarvisor</title>
+</head>
+
+<body>
+  <header>
+    <div>
+      <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href='/main'>Jarvisor</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
+                Jarvisor
+              </h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/mypage">마이페이지</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout">로그아웃</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <!--캔버스이동메뉴-->
+    <div class="top">
+      <div class="menubar">
+        <ul class="nav nav-pills nav-fill">
+          <li class="nav-item">
+            <a class="nav-link" href='/project'>프로젝트</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" style="background: aquamarine; color: black"
+            href='/topic'>회의록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href='/todo'>To Do List</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="contents">
+      <div class="box">
+        <div class="plan_head">
+          <input id="topicName" type="text" value="회의 토픽을 입력하세요" readonly />
+          <button id="topic" onclick="open_box()">토픽 입력</button>
+        </div>
+        <div id="topic_change">
+          <input id="newTopic" type="text" />
+          <div class="btnBox">
+            <button class="btn btn-outline-secondary" type="button" onclick="input_topic(), close_box()">
+              저장하기
+            </button>
+            <button class="btn btn-outline-secondary" type="button" onclick="close_box()">
+              닫기
+            </button>
+          </div>
+        </div>
+        <!--토픽-->
+        <div>
+          <script>
+            function open_box() {
+              $("#topic_change").show();
+            }
+            function close_box() {
+              $("#topic_change").hide();
+            }
+            function input_topic() {
+              const newTopic = document.getElementById("newTopic").value;
+              document.getElementById("topicName").value = newTopic;
+            }
+          </script>
+        </div>
+      </div>
+      <div class="box">
+        <!--컨텐츠 (회의내용)-->
+        <div class="inbox">
+          <style>
+            #add_content {
+              display: none;
+            }
+          </style>
+
+          <script>
+            topic_id = 1;
+            function open_content() {
+              $("#add_content").show();
+            }
+            function close_content() {
+              $("#add_content").hide();
+            }
+            function add_content() {
+              const name = document.getElementById("name").value;
+              const summary = document.getElementById("summary").value;
+              const comment = document.getElementById("comment").value;
+              let temp_html = `
+                <div id="${topic_id}" style="margin-top: 10px; margin-bottom: 10px;">
+                  <input type="text" value="${name}" readonly 
+                    style="background-color: transparent;
+                    border: 1px solid gray;
+                    color: white;
+                    text-align: center;">
+                  <input type="text" value="${summary}" readonly
+                    style="background-color: transparent;
+                    border: 1px solid gray;
+                    color: white;
+                    text-align: center;">
+                  <input type="text" value="${comment}" readonly
+                    style="background-color: transparent;
+                    border: 1px solid gray;
+                    color: white;
+                    text-align: center;">
+                  <button type="button" onclick="delete_comment(${topic_id})"
+                    style="background-color: transparent;
+                    border: 1px solid gray;
+                    color: gray;
+                  text-align: center;">삭제</button>
+                </div>
+              `;
+              $("#content").append(temp_html);
+              topic_id++;
+            }
+
+            function delete_comment(id) {
+              $(`#${id}`).remove();
+            }
+
+            function change_comment() {
+              $("#mymodal").modal("show");
+            }
+          </script>
+
+          <div id="content">
+            <input type="text" value="이름" readonly />
+            <input type="text" value="내용" readonly />
+            <input type="text" value="코멘트" readonly />
+            <button id="btn_add" onclick="open_content()">추가</button>
+          </div>
+          <div id="add_content">
+              <input id="name" type="text" />
+              <input id="summary" type="text" />
+              <input id="comment" type="text" />
+              <button type="button" onclick="add_content(), close_content()">
+                저장
+              </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+</body>
+
+</html>

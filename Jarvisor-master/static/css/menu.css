@@ -1,0 +1,39 @@
+* {
+    font-family: "Nanum Gothic", sans-serif;
+  }
+
+header {
+    background-color: #0a090e;
+    width: 100%;
+    margin: 10px autog;
+}
+
+.logo  {
+    width: 300px;
+    margin: auto;
+
+}
+
+.logo > button {
+    margin: auto;
+    display: block;
+
+    font-size: xx-large;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-style: oblique;
+}
+
+.navbar > .container-fluid > .navbar-toggler {
+    border: none;
+    color: white;
+}
+
+.offcanvas {
+    background-color: #0a090e;
+}
+
+.offcanvas-header {
+    color: aquamarine;
+}

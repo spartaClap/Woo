@@ -1,0 +1,124 @@
+* {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.plan_head {
+  height: 80px;
+  width: 100%;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    );
+  background-position: center;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.plan_head > input {
+  width: 60%;
+  height: 40px;
+  font-size: x-large;
+  background-color: transparent;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.introbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#projectIntro {
+  width: 90%;
+  height: 100px;
+  text-align: center;
+  font-size: large;
+  color: white;
+  background-color: transparent;
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.introbox > button {
+  margin-bottom: 20px;
+  width: 100px;
+  height: 35px;
+  background-color: transparent;
+  color: white;
+  border-radius: 20px;
+  border: 1px solid white;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.introbox > button:hover {
+  border: 2px solid aquamarine;
+}
+
+/* 모달창 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.modal .bg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modalBox {
+  position: absolute;
+  background-color: black;
+  width: 70%;
+  padding: 20px;
+
+  border: 1px solid aquamarine;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+}
+
+
+.inputbox {
+  width: 70%;
+  height: 100px;
+  background-color: transparent;
+  margin-bottom: 15px;
+  border: 1px solid white;
+  color: white;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.modalBtn > button {
+  border: 1px solid aquamarine;
+  background-color: transparent;
+  border-radius: 20px;
+  color: aquamarine;
+  margin-top: 20px;
+}

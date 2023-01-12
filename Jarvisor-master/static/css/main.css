@@ -1,0 +1,188 @@
+* {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.plan_head {
+  height: 1000px;
+  width: 100%;
+  margin-top: -200px;
+
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99F1DB425CE24D5727");
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.plan_head > .circle {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  border-color: aqua;
+  border-style: groove;
+  background-color: #0a090e;
+}
+
+.plan_head > .circle > .circle_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: white;
+  text-align: center;
+}
+
+.plan_head > button {
+  width: 250px;
+  height: 50px;
+
+  background-color: transparent;
+  color: white;
+  border-radius: 50px;
+  margin-bottom: 0px;
+
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border-color: aqua;
+  border-style: groove;
+}
+
+.plan_head > button:hover {
+  background-color: aqua;
+  color: black;
+}
+
+
+
+.plan_head > .circle > .circle_text > form > button {
+  width: 100px;
+  height: 40px;
+
+  background-color: transparent;
+  color: white;
+  border-radius: 50px;
+  margin-bottom: 0px;
+
+  border-color: aqua;
+  border-style: groove;
+}
+
+.plan_head > .circle > .circle_text > form > button:hover {
+  background-color: aqua;
+  color: black;
+}
+
+
+
+body {
+  background: #333;
+} 
+/* 웹문서 자체 배경색 지정 */
+.hoverbox {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 922px;
+  height: 504px;
+  background: url("/static/img/background.png") center center / 100% no-repeat;
+}
+
+.hoverbox .screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+}
+
+.hoverbox .screen [class*="hud"] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 1s;
+}
+
+.hoverbox .screen [class*="hud"] img {
+  max-width: 100%;
+}
+
+.hoverbox .screen:hover [class*="hud"] {
+  opacity: 1;
+}
+
+.hoverbox .screen .hud01 {
+  animation: rolling01 5s linear infinite;
+  width: 80%;
+}
+
+.hoverbox .screen .hud02 {
+  animation: rolling02 10s infinite alternate;
+}
+
+.hoverbox .screen .hud06 {
+  top: 22%;
+}
+
+/* rotate 속성으로 1바퀴 돌아가는 키프레임 */
+@keyframes rolling01 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+/* rotate 속성으로 1바퀴 돌아가는데, 초반에는 빠르게 돌다가 천천히 돌아가는 키프레임 */
+@keyframes rolling02 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  30% {
+    transform: translate(-50%, -50%) rotate(200deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+/* rotate 속성으로 1바퀴 돌리고 중간에 크기도 변화기시키는 키프레임  scale()의 1이 기본값!! 값이 1보다 작으면 크기가 작아지고 1보다 값이 크면 크기가 커짐 */
+@keyframes rollandscale {
+  0% {
+    transform: translate(-50%, -50%) rotate(0) scale(1);
+  }
+  35% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+  40% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(0.5);
+  }
+  60% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.5);
+  }
+  65% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}
